@@ -4,7 +4,6 @@ import ehs
 import flask
 from ehs.api.utils import *
 import uuid
-
 import ehs.model
 
 
@@ -12,8 +11,6 @@ import ehs.model
 def get_patients():
     """Get a list of all patients and a small summary of them."""
     connection = ehs.model.get_db()
-    # if not is_doctor(connection):
-    #     flask.abort(401)
     patients = connection.execute("SELECT patientid, name, dob, sex FROM patient")
     patients = patients.fetchall()
     # find latest 3 medicine states

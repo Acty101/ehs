@@ -8,6 +8,8 @@ version = "1.0.0"
 dependencies = [
     "Flask",
     "requests",
+    "flask-cors",
+    "Flask-JWT-Extended",
 ]
 requires-python = ">=3.10"
 

@@ -77,3 +77,6 @@ CREATE TABLE
         FOREIGN KEY (active_medicineid) REFERENCES active_med (activeid) ON DELETE CASCADE,
         FOREIGN KEY (medication) REFERENCES medicine (name) ON DELETE CASCADE
     );
+
+CREATE TABLE
+    blacklist (token VARCHAR(256) PRIMARY KEY)

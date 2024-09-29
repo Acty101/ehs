@@ -90,7 +90,7 @@ def take_medicine(patientid: int):
     name = data.get("name")
     med_id = data.get("id", None)
     if med_id is None:
-        flask.abort()
+        flask.abort(404)
     connection = ehs.model.get_db()
     taken = True
     if not date:

@@ -2,7 +2,6 @@
 
 import ehs
 import flask
-from sqlite3 import Connection
 from ehs.api.utils import *
 import ehs.model
 
@@ -28,13 +27,32 @@ def login():
         flask.abort(403)
     # log user in with session obj
     flask.session["username"] = username
-    return flask.jsonify({"message": "Login successful"}), 200
+
+    res = connection.execute(
+        "SELECT is_doctor FROM users WHERE username == ?", (username,)
+    )
+    res = res.fetchone()
+    flask.session["is_doctor"] = res["is_doctor"] == 1
+    return (
+        flask.jsonify(
+            {"message": "Login successful", "is_doctor": flask.session["is_doctor"]}
+        ),
+        200,
+    )
 
 
 @ehs.app.route("/api/v1/check_login/", methods=["GET"])
 def is_logged():
     """Return true if logged in."""
-    return flask.jsonify({"is_logged_in": logged_in()}), 200
+    return (
+        flask.jsonify(
+            {
+                "is_logged_in": logged_in(),
+                "is_doctor": flask.session.get("is_doctor", False),
+            }
+        ),
+        200,
+    )
 
 
 @ehs.app.route("/api/v1/logout/", methods=["GET"])

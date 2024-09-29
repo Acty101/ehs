@@ -202,10 +202,21 @@ VALUES
         0,
         4,
         12,
-        NULL,
+        '2024-09-26 22:00:00',
         '2024-09-24 10:00:00'
     ),
-    (1, 'Ibuprofen', 2, 3, 1, 0, 4, 1, NULL, NULL),
+    (
+        1,
+        'Ibuprofen',
+        2,
+        3,
+        1,
+        0,
+        4,
+        1,
+        NULL,
+        '2024-09-29 00:00:00'
+    ),
     (
         1,
         'Acetaminophen',
@@ -219,8 +230,8 @@ VALUES
         NULL
     ),
     (
-        2,
-        'Acetaminophen',
+        1,
+        'Chlorpheniramine',
         2,
         3,
         12,
@@ -229,6 +240,18 @@ VALUES
         12,
         NULL,
         NULL
+    ),
+    (
+        1,
+        'Metoprolol',
+        2,
+        3,
+        1,
+        0,
+        4,
+        1,
+        DATETIME ('now', '-479 minutes'),
+        DATETIME ('now', '-1 day')
     ),
     (
         3,

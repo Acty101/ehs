@@ -6,6 +6,13 @@ from sqlite3 import Connection
 import flask
 from collections import defaultdict
 from datetime import datetime, timedelta
+from enum import Enum
+
+
+class IdentityStatus(Enum):
+    PATIENT = 0
+    PHARMACIST = 1
+    DOCTOR = 2
 
 
 def add_patient_adherence(patient: dict, connection: Connection, x: int = None):
